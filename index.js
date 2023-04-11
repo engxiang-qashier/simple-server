@@ -20,7 +20,8 @@ app.post('/hello', jsonParser,(req, res) => {        //get requests to the root 
     }
 
     if(!req.body.id){
-        console.log("req.body.id",req.body.id);
+        var id = req.body.id + "00";
+        cconsole.log("uidpad",id);
     }
     res.send(`uuid is ${req.body.id}`);                                             
 });
