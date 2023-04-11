@@ -22,9 +22,14 @@ app.post('/hello', jsonParser,(req, res) => {        //get requests to the root 
     var request;
     if(!req.body.id){
         var id = req.body.id + "00";
-        cconsole.log("uidpad",id);
+        console.log("uidpad",id);
+    }
+    if(!req.body.id){
+        var id = req.body.id + "00";
+        console.log("uidpad",id);
     }
     var bug = request.body;
+
     res.send(`uuid is ${req.body.id}`);                                             
 });
 
