@@ -11,4 +11,5 @@ jobs:
     steps:
       - name: curl notification
         run: |
-          echo ${{ toJSON(github.event.release.body) }}
+          export DESCRIPTION=${{ toJSON(github.event.release.body) }}
+          echo $DESCRIPTION
