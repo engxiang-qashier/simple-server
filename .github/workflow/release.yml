@@ -1,0 +1,15 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  slack-notification:
+    name: Slack Notification
+    runs-on: ubuntu-latest
+    steps:
+      - name: curl notification
+        run: |
+          DESCRIPTION=toJSON(github.event.release.body)
+          curl -d '{"text": "<!channel>\n>POS Release *${{ github.event.release.tag_name }}* published \n${{ DESCRIPTION }}"}' -H 'Content-Type: application/json' ${{ secrets.SLACK_WEBHOOK_EX }}
