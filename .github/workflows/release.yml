@@ -9,8 +9,9 @@ jobs:
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
+      - name: Get description
+        id: description
+        run: echo "description=$(echo ${{ toJSON(github.event.release.body) }}  | cut -c 1-6)" >> $$GITHUB_OUTPUT
       - name: curl notification
         run: |
-          echo "DESCRIPTION=$(echo ${{ toJSON(github.event.release.body) }}  | cut -c 1-6)" >> $GITHUB_ENV
-          echo "$DESCRIPTION"
-          # curl -d '{"text": "<!channel>\n>POS Release *${{ github.event.release.tag_name }}* published \n ${{ toJSON(github.event.release.body) }}"}' -H 'Content-Type: application/json' ${{ secrets.SLACK_WEBHOOK_EX }}
+          curl -d '{"text": "<!channel>\n>POS Release *${{ github.event.release.tag_name }}* published \n ${{ steps.description.outputs.description }}"}' -H 'Content-Type: application/json' ${{ secrets.SLACK_WEBHOOK_EX }}
