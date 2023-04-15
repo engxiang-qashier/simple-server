@@ -15,3 +15,4 @@ jobs:
       - name: curl notification
         run: |
           curl -d '{"text": "<!channel>\n>POS Release *${{ github.event.release.tag_name }}* published \n ${{ steps.description.outputs.description }}"}' -H 'Content-Type: application/json' ${{ secrets.SLACK_WEBHOOK_EX }}
+          curl -d '{"text": "<!channel>\n>POS Release *${{ github.event.release.tag_name }}* published \n ${{ steps.description.outputs.description }}"}' -H 'Content-Type: application/json' ${{ secrets.SLACK_WEBHOOK_EX }}
