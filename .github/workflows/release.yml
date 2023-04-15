@@ -9,6 +9,10 @@ jobs:
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: get description
         id: description
         run: echo "description=$(echo ${{ toJSON(github.event.release.body) }})" >> $GITHUB_OUTPUT
