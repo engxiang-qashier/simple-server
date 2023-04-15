@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Get description
         id: description
-        run: echo "description=${{ toJSON(github.event.release.body) }}" >> $$GITHUB_OUTPUT
+        run: echo "description=${{ toJSON(github.event.release.body) }}" >> $GITHUB_OUTPUT
       - name: curl notification
         run: |
           echo ${{ steps.description.outputs.description }}
