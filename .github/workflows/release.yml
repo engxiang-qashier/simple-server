@@ -18,5 +18,5 @@ jobs:
         run: echo "description=$(echo ${{ toJSON(github.event.release.body) }})" >> $GITHUB_OUTPUT
       - name: curl notification
         run: |
-          curl -d '{"text": "<!channel>\n>POS Release *${{ github.event.release.tag_name }}* published\n${{ steps.description.outputs.description }}"}' -H 'Content-Type: application/json' ${{ secrets.SLACK_WEBHOOK_EX }}
-          curl -d '{"text": "<!channel>\n>POS Release *${{ github.event.release.tag_name }}* published\n${{ steps.description.outputs.description }}"}' -H 'Content-Type: application/json' ${{ secrets.SLACK_WEBHOOK_EX }}
+          curl -d '{"text": "<!channel>\n>POS Release *${{ github.event.release.name }}* published\n${{ steps.description.outputs.description }}"}' -H 'Content-Type: application/json' ${{ secrets.SLACK_WEBHOOK_EX }}
+          curl -d '{"text": "<!channel>\n>POS Release *${{ github.event.release.name }}* published\n${{ steps.description.outputs.description }}"}' -H 'Content-Type: application/json' ${{ secrets.SLACK_WEBHOOK_EX }}
