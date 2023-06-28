@@ -1,1 +1,1 @@
-# simple-node-server
+# simple-server
